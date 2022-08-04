@@ -1,0 +1,29 @@
+
+<div class="container col-sm-4" style="margin-top: 10%">
+    <h3>Novo Usuário</h3>
+    <form method="POST" action="/registreSe">
+   
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Usuário</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" name="usuario" id="usuario">
+            <div id="validUsuario" class="invalid-feedback"></div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" name="senha" id="senha">
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">Campo obrigatório</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirmar senha</label>
+            <input type="password" class="form-control" id="confirmarSenha">
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">Senhas não conferem</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp" name="email" id="email">
+            <div id="validEmail" class="invalid-feedback"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="cadastrar">Cadastre-se</button>
+    </form>
+</div>

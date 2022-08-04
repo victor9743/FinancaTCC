@@ -1,0 +1,25 @@
+<?php
+    session_start();
+?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="container col-sm-4" style="margin-top: 20%">
+    <form action="/login" method="POST">
+        
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp" name="email">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" name="senha">
+        </div>
+        <div class="mb-3">
+            <a href="/cadastreSe" class="form-link">Não possui uma conta? cadastre-se</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
