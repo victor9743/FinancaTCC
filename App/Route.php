@@ -36,12 +36,20 @@
                 'controller' => 'indexController',
                 'action' => 'verificarEmail'
             );
+             
+            $routes["homeFinanca"] = array(
+                'route' => '/home',
+                'controller' => 'financaController',
+                'action' => 'home'
+            );
 
             $routes["login"] = array(
                 'route' => '/login',
                 'controller' => 'indexController',
                 'action' => 'login'
             );
+
+           
 
             $this->setRoutes($routes);
         }

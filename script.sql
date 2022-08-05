@@ -7,8 +7,6 @@ create table usuariosFinanca (
     email varchar(75) not null,
     ativo boolean
 );
-select * from usuariosFinanca;
-SELECT count(*) FROM usuariosFinanca WHERE email = "teste@teste.com";
 
 create table financas (
 	id int primary key auto_increment,
@@ -17,3 +15,5 @@ create table financas (
     tipo int,
     dataFinanca date
 );
+
+ALTER TABLE financas ADD FOREIGN KEY (student_id) REFERENCES points(id);

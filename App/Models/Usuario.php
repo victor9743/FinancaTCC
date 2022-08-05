@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use MF\Model\Model;
+use stdClass;
 
 class Usuario extends Model {
 
@@ -58,20 +59,27 @@ class Usuario extends Model {
     }
 
     public function login($email, $senha){
-        $acessJson = array();
-        $query = "SELECT email FROM usuariosFinanca WHERE email = :email AND senha = :senha";
+        $obj = new stdClass();
+        $query = "SELECT usuario FROM usuariosFinanca WHERE email = :email AND senha = :senha";
         $stmt = $this->db->prepare($query);
 
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':senha', $senha);
+        $stmt->execute();
 
         $acesso = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!empty($acesso)){
-            $acessJson->acesso = true;
-            $acessJson->usuario = $acesso;
+            $obj->acesso = true;
+            $obj->usuario = $acesso['usuario'];
+            return $obj;
+        } else {
+            $obj->acesso =  false;
+            return $obj;
         }
-        return $acesso;
+        
+        
+        //return $acesso;
     }
 }
 ?>

@@ -3,10 +3,6 @@
 
     use MF\Controller\Action;
     use MF\Model\Container;
-
-    use App\Models\Produto;
-    use App\Models\Info;
-
     class indexController extends Action {
 
         public function index()
@@ -52,7 +48,9 @@
 
             $this->render('index', 'layout1');
         }
-        public function verificarUsuario(){
+
+        public function verificarUsuario()
+        {
             $usuario = Container::getModel('Usuario');
 
             $usuario = $usuario->verificarUsuario($_POST['usuario']);
@@ -62,7 +60,8 @@
             echo json_encode($usuario);
         }
 
-        public function verificarEmail(){
+        public function verificarEmail()
+        {
             $email = Container::getModel('Usuario');
             $email = $email->VerificarEmail($_POST['email']);
 
@@ -73,9 +72,21 @@
         public function login(){    
             $login = Container::getModel('Usuario');
             $login = $login->login($_POST['email'], md5($_POST['senha']));
+            //var_dump($login);
 
-            header('Content-Type: application/json');
-            echo json_encode($login);
+            if ($login->acesso) 
+            {
+                session_start();
+                $_SESSION['usuario']  = $login->usuario;
+                header('Location: /home');
+
+            } else {
+                header('Location: /?login=erro');
+
+            }
+
+            /*header('Content-Type: application/json');
+            echo json_encode($login);*/
             
         }
 
