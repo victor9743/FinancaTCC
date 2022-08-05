@@ -1,0 +1,26 @@
+<div class="container"  style="margin-top: 200px">
+<h2>Cadastrar</h2>
+    <form method="POST" action="/salvarFinanca">
+        <div class="mb-3">
+            <label class="form-label">Descrição</label>
+            <input type="teste" class="form-control" id="descricao" name="descricao">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Valor</label>
+            <input type="number" class="form-control" id="valor" name="valor">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tipo</label>
+            <select class="form-select" aria-label="Default select example" name="tipo">
+                <option selected>Selecione o tipo...</option>
+                <option value="1">Receita</option>
+                <option value="2">Despesa</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Data de lançamento</label>
+            <input type="date" class="form-control" id="data" name="data">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>

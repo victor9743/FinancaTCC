@@ -49,6 +49,17 @@
                 'action' => 'login'
             );
 
+            $routes["financaNovo"] = array(
+                'route' => '/financa/novo',
+                'controller' => 'financaController',
+                'action' => 'financaNovo'
+            );
+
+            $routes["salvarFinanca"] = array(
+                'route' => '/salvarFinanca',
+                'controller' => 'financaController',
+                'action' => 'salvarFinanca'
+            );
            
 
             $this->setRoutes($routes);

@@ -7,17 +7,6 @@
 
         public function index()
         {
-            //instancia de conexao
-            // $produto =  Container::getModel('produto');
-            //instanciar modelo
-
-
-            // $produtos = $produto->getProdutos();
-
-            // $this->view->dados = $produtos;
-           
-            //chamada das views
-            //require_once "..\App\Views\index\index.phtml";
             $this->render('index', 'layout1');
         }
 
@@ -84,10 +73,6 @@
                 header('Location: /?login=erro');
 
             }
-
-            /*header('Content-Type: application/json');
-            echo json_encode($login);*/
-            
         }
 
 
