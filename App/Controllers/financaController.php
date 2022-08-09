@@ -27,13 +27,12 @@
             $financa = Container::getModel('Financa');
 
             $financa = $financa->salvarFinanca($_POST['descricao'], $_POST['valor'], $_POST['tipo'], $_POST['data']);
-            $_GET['POST'] = "ok";
-            header('Location: /home');
+            header('Location: /home?save=true');
         }
 
         private function auth(){
             session_start();
-            if(!isset($_SESSION['usuario']))  header('Location: /?login=erro');;
+            if(!isset($_SESSION['usuario']))  header('Location: /?auth=false');
         }
         
     }

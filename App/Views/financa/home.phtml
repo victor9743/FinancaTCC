@@ -1,24 +1,17 @@
 
 <?php
     session_start();
-    $cadastro = "";
-    // if (isset($_POST['cadastro'])) { 
-    //   $cadastro = $_POST['cadastro'];
-    //   unset($_POST['cadastro']);
-    // } else {
-    //   $cadastro = "";
-    // }
-    var_dump(isset($_GET['cadastro']));
-    // var_dump($_GET['cadastro']);
+    $msg = isset($_GET['save']) ? $_GET['save']: '';
 ?>
-<?php if (!empty($cadastro)) { ?>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+<?php if (!empty($msg)) { ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Aviso!</strong> Finança salva com sucesso !!!.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <?php } ?>
+
 <div class="container mt-4">
-    <table class="table">
+    <table class="table" id="myTable">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -43,3 +36,21 @@
     </table>
     <a href="/financa/novo" class="btn btn-primary">Cadastrar</a>
 </div>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
+<script>
+  $(document).ready( function () {
+      $('#myTable').DataTable(
+        {
+          "language": {
+            "paginate": {
+              "previous": "Anterior",
+              "next" : "Próximo",
+            },
+            "search" : "Pesquisar",
+            "show" : "mostrar"
+          }
+        }
+      );
+  } );
+</script>

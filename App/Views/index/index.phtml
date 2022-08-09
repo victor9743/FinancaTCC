@@ -1,10 +1,22 @@
 <?php
     session_start();
+
+    $msg  = isset($_GET['auth']) ? $_GET['auth'] : '' ;
+
+    if (!empty($msg)) {
+        if ($_GET['auth'] == 'false') {
+            $msg =  'Você precisa está efetuando o login antes de entrar';
+        } else if($_GET['auth'] == 'erroSenha'){
+            $msg = 'Usuário ou senha inválida';
+        }
+    }
 ?>
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+<?php if (!empty($msg)) { ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Aviso</strong> <?= $msg ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php } ?>
 <div class="container col-sm-4" style="margin-top: 10%">
     <form action="/login" method="POST">
         
@@ -23,3 +35,30 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>
+<script>
+     //fetch new URL
+    //refineURL() gives you the freedom to alter the URL string based on your needs. 
+    var myNewURL = refineURL();
+
+    //here you pass the new URL extension you want to appear after the domains '/'. Note that the previous identifiers or "query string" will be replaced. 
+    window.history.pushState("object or string", "Title", "/" + myNewURL );
+
+
+    //Helper function to extract the URL between the last '/' and before '?' 
+    //If URL is www.example.com/one/two/file.php?user=55 this function will return 'file.php' 
+    //pseudo code: edit to match your URL settings  
+
+    function refineURL()
+    {
+        //get full URL
+        var currURL= window.location.href; //get current address
+        console.log(currURL);
+        //Get the URL between what's after '/' and befor '?' 
+        //1- get URL after'/'
+        var afterDomain= currURL.substring(currURL.lastIndexOf('/') + 1);
+        //2- get the part before '?'
+        var beforeQueryString= afterDomain.split("?")[0];  
+    
+        return beforeQueryString;     
+    }
+</script>

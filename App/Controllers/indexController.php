@@ -70,7 +70,7 @@
                 header('Location: /home');
 
             } else {
-                header('Location: /?login=erro');
+                header('Location: /?auth=erroSenha');
 
             }
         }

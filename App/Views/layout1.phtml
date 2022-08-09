@@ -83,7 +83,6 @@
                 url: '/verificarEmail',
                 data: {email: $("#email").val()},
                 success: function(data) {
-                    console.log(data);
                     if (data.count > 0 ){
                         $("#email").addClass("is-invalid");
                         $("#validEmail").html("Email já existe");

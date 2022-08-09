@@ -1,26 +1,30 @@
 <div class="container"  style="margin-top: 200px">
 <h2>Cadastrar</h2>
-    <form method="POST" action="/salvarFinanca">
+    <form method="POST" action="/salvarFinanca" id="cadastrarFinanca">
         <div class="mb-3">
             <label class="form-label">Descrição</label>
-            <input type="teste" class="form-control" id="descricao" name="descricao">
+            <input type="text" class="form-control" id="descricao" name="descricao">
+            <div id="validDescricao" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
             <label class="form-label">Valor</label>
             <input type="number" class="form-control" id="valor" name="valor">
+            <div id="validValor" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
             <label class="form-label">Tipo</label>
-            <select class="form-select" aria-label="Default select example" name="tipo">
-                <option selected>Selecione o tipo...</option>
-                <option value="1">Receita</option>
-                <option value="2">Despesa</option>
+            <select class="form-select" aria-label="Default select example" name="tipo" id="tipoFinanca">
+                <option value="" selected>Selecione o tipo...</option>
+                <option value="1" id="receita">Receita</option>
+                <option value="2" id="despesa">Despesa</option>
             </select>
+            <div id="validTipo" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
             <label>Data de lançamento</label>
             <input type="date" class="form-control" id="data" name="data">
+            <div id="validData" class="invalid-feedback"></div>
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-primary" id="salvarFinanca">Salvar</button>
     </form>
 </div>

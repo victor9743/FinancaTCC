@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <title>Finança TCC</title>
 </head>
 <body>
@@ -56,7 +57,92 @@
 </body>
 <script>
   $(document).ready(function(){
-    console.log("hello wolrd");
+    $("#cadastrarFinanca").on('keypress',function(e) {
+        if(e.which == 13) {
+            e.preventDefault();
+        }
+    });
+
+    $("#valor").blur(function(){
+      if(this.value != "") {
+        if(this.value >= 0 ) {
+          $("#despesa").remove();
+        } else {
+          $("#receita").remove();
+        }
+      }
+    });
+    
+    $("#salvarFinanca").on("click", function (event){
+      
+      let valid  = 0;
+
+      if($("#descricao").val() != "") {
+        valid = valid + 1;
+        $("#descricao").removeClass("is-invalid");
+      } else {
+        $("#validDescricao").html("Campo obrigatório");
+        $("#descricao").addClass("is-invalid");
+      }
+
+      if($("#valor").val() != "") {
+        valid = valid + 1;
+        $("#valor").removeClass("is-invalid");
+      } else {
+        $("#validValor").html("Campo obrigatório");
+        $("#valor").addClass("is-invalid");
+
+      }
+
+      if($("#tipoFinanca").val() != "") {
+        valid = valid + 1;
+        $("#tipoFinanca").removeClass("is-invalid");
+      } else {
+        $("#validTipo").html("Campo obrigatório");
+        $("#tipoFinanca").addClass("is-invalid");
+
+      }
+
+      if($("#data").val() != "") {
+        valid = valid + 1;
+        $("#data").removeClass("is-invalid");
+      } else {
+        $("#validData").html("Campo obrigatório");
+        $("#data").addClass("is-invalid");
+      }
+
+      if (valid < 4) {
+        event.preventDefault();
+      }
+
+    });
+
+      //fetch new URL
+    //refineURL() gives you the freedom to alter the URL string based on your needs. 
+    var myNewURL = refineURL();
+
+    //here you pass the new URL extension you want to appear after the domains '/'. Note that the previous identifiers or "query string" will be replaced. 
+    window.history.pushState("object or string", "Title", "/" + myNewURL );
+
+
+    //Helper function to extract the URL between the last '/' and before '?' 
+    //If URL is www.example.com/one/two/file.php?user=55 this function will return 'file.php' 
+    //pseudo code: edit to match your URL settings  
+
+    function refineURL()
+    {
+        //get full URL
+        var currURL= window.location.href; //get current address
+        console.log(currURL);
+        //Get the URL between what's after '/' and befor '?' 
+        //1- get URL after'/'
+        var afterDomain= currURL.substring(currURL.lastIndexOf('/') + 1);
+        //2- get the part before '?'
+        var beforeQueryString= afterDomain.split("?")[0];  
+    
+        return beforeQueryString;     
+    }
+    
   });
 </script>
 </html>
